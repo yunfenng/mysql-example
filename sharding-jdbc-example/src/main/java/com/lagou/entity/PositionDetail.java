@@ -8,29 +8,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * @Author: Jaa
- * @Date: 2023/2/7 0:03
+ * @Date: 2023/2/8 21:55
  * @Description:
  */
 @Data
 @Entity
-@Table(name = "position")
-public class Position implements Serializable {
+@Table(name = "position_detail")
+public class PositionDetail {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "pid")
+    private long pid;
 
-    @Column(name = "salary")
-    private String salary;
-
-    @Column(name = "city")
-    private String city;
+    @Column(name = "description")
+    private String description;
 }
