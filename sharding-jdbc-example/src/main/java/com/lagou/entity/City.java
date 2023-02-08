@@ -12,22 +12,22 @@ import java.io.Serializable;
 
 /**
  * @Author: Jaa
- * @Date: 2023/2/8 21:55
+ * @Date: 2023/2/8 22:52
  * @Description:
  */
 @Data
 @Entity
-@Table(name = "position_detail")
-public class PositionDetail implements Serializable {
+@Table(name = "city")
+public class City implements Serializable {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "pid")
-    private long pid;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "province")
+    private String province;
 }

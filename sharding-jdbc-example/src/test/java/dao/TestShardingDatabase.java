@@ -1,8 +1,10 @@
 package dao;
 
 import com.lagou.RunBoot;
+import com.lagou.entity.City;
 import com.lagou.entity.Position;
 import com.lagou.entity.PositionDetail;
+import com.lagou.repository.CityRepository;
 import com.lagou.repository.PositionDetailRepository;
 import com.lagou.repository.PositionRepository;
 import org.junit.Test;
@@ -26,6 +28,9 @@ public class TestShardingDatabase {
 
     @Resource
     private PositionDetailRepository positionDetailRepository;
+
+    @Resource
+    private CityRepository cityRepository;
 
     @Test
     public void testAdd() {
@@ -53,5 +58,20 @@ public class TestShardingDatabase {
             positionDetail.setDescription("this is a message " + i);
             positionDetailRepository.save(positionDetail);
         }
+    }
+
+    @Test
+    public void testLoad() {
+        Object object = positionRepository.findPositionById(830209029715263489L);
+        Object[] position = (Object[]) object;
+        System.out.println(position[0] + " " + position[1] + " " + position[2] + " " + position[3] + " " + position[4]);
+    }
+
+    @Test
+    public void testBroadcast() {
+        City city = new City();
+        city.setName("shanghai");
+        city.setProvince("shanghai");
+        cityRepository.save(city);
     }
 }
