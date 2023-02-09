@@ -1,18 +1,23 @@
 package dao;
 
 import com.lagou.RunBoot;
+import com.lagou.entity.BOrder;
 import com.lagou.entity.City;
 import com.lagou.entity.Position;
 import com.lagou.entity.PositionDetail;
+import com.lagou.repository.BOrderRepository;
 import com.lagou.repository.CityRepository;
 import com.lagou.repository.PositionDetailRepository;
 import com.lagou.repository.PositionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Repeat;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * @Author: Jaa
@@ -31,6 +36,9 @@ public class TestShardingDatabase {
 
     @Resource
     private CityRepository cityRepository;
+
+    @Resource
+    private BOrderRepository orderRepository;
 
     @Test
     public void testAdd() {
@@ -73,5 +81,27 @@ public class TestShardingDatabase {
         city.setName("shanghai");
         city.setProvince("shanghai");
         cityRepository.save(city);
+    }
+
+    @Test
+    @Repeat(100)
+    public void testShardingBOrder(){
+        Random random = new Random();
+        int companyId = random.nextInt(10);
+        BOrder order = new BOrder();
+        order.setDel(false);
+        order.setCompanyId(companyId);
+        order.setPositionId(3242342);
+        order.setUserId(2222);
+        order.setPublishUserId(1111);
+        order.setResumeType(1);
+        order.setStatus("AUTO");
+        order.setCreateTime(new Date());
+        order.setOperateTime(new Date());
+        order.setWorkYear("2");
+        order.setName("lagou");
+        order.setPositionName("Java");
+        order.setResumeId(23233);
+        orderRepository.save(order);
     }
 }
