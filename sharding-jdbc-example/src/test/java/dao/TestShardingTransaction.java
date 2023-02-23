@@ -33,7 +33,7 @@ public class TestShardingTransaction {
 
     @Test
     @Transactional
-    // @ShardingTransactionType(TransactionType.XA)
+    @ShardingTransactionType(TransactionType.XA)
     // @ShardingTransactionType(TransactionType.BASE)
     public void test1() {
         // TransactionTypeHolder.set(TransactionType.XA);
