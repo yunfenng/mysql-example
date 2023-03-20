@@ -8,7 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sharding-jdbc-example" />
+        <module name="sharding-proxy-example" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sharding-proxy-example" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
